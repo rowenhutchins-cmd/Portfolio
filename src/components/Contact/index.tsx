@@ -4,7 +4,11 @@ import { useState } from "react";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-const Contact = () => {
+type ContactProps = {
+  variant?: "embedded" | "page";
+};
+
+const Contact = ({ variant = "embedded" }: ContactProps) => {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -44,7 +48,14 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="bg-ink border-t border-white/10 py-20 lg:py-28">
+    <section
+      id="contact"
+      className={`bg-ink py-20 lg:py-28 ${
+        variant === "page"
+          ? "pt-32 lg:pt-40"
+          : "border-t border-white/10"
+      }`}
+    >
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 lg:px-10">
         <div className="flex flex-col gap-4">
           <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-accent">

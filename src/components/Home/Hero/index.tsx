@@ -1,23 +1,7 @@
 "use client";
 
-import { ArrowRight, Menu, ShieldCheck, X } from "lucide-react";
-import { Inter, Instrument_Serif } from "next/font/google";
-import Image from "next/image";
-import Link from "next/link";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "800"],
-  variable: "--font-inter",
-});
-
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  style: "italic",
-  variable: "--font-instrument-serif",
-});
 
 const STREAM_URL =
   "https://stream.mux.com/tLkHO1qZoaaQOUeVWo8hEBeGQfySP02EPS02BmnNFyXys.m3u8";
@@ -27,15 +11,8 @@ const HEADLINES = [
   "Veteran discipline, developer precision",
 ];
 
-const NAV_LINKS = [
-  { label: "PROJECTS", href: "/projects" },
-  { label: "ABOUT", href: "/about" },
-  { label: "RESUME", href: "/resume" },
-];
-
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [headlineIndex, setHeadlineIndex] = useState(0);
   const [headlineVisible, setHeadlineVisible] = useState(true);
 
@@ -90,9 +67,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section
-      className={`${inter.variable} ${instrumentSerif.variable} relative min-h-[100dvh] w-full overflow-hidden bg-[#070b0a]`}
-    >
+    <section className="relative min-h-[100dvh] w-full overflow-hidden bg-[#070b0a]">
       <video
         ref={videoRef}
         autoPlay
@@ -138,88 +113,12 @@ const Hero = () => {
         />
       </svg>
 
-      <header className="absolute inset-x-0 top-0 z-20">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-10">
-          <Link
-            href="/"
-            className="flex items-center gap-2.5 text-sm font-extrabold uppercase tracking-[0.2em] text-white"
-          >
-            <Image
-              src="/favicon.svg"
-              alt="Rowen Hutchins logo"
-              width={28}
-              height={28}
-              className="h-7 w-7 rounded-md"
-            />
-            Rowen Hutchins
-          </Link>
-
-          <nav
-            style={{ fontFamily: "var(--font-inter)" }}
-            className="hidden items-center gap-9 lg:flex"
-          >
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-base text-white transition-colors duration-200 hover:text-[#5ed29c]"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          <button
-            type="button"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((open) => !open)}
-            className="text-white lg:hidden"
-          >
-            {menuOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
-        </div>
-      </header>
-
-      {menuOpen && (
-        <div
-          style={{ fontFamily: "var(--font-inter)" }}
-          className="fixed inset-0 z-30 flex flex-col items-center justify-center gap-8 bg-[#070b0a] lg:hidden"
-        >
-          <button
-            type="button"
-            aria-label="Close menu"
-            onClick={() => setMenuOpen(false)}
-            className="absolute right-6 top-6 text-white"
-          >
-            <X size={28} />
-          </button>
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className="text-2xl font-semibold text-white transition-colors duration-200 hover:text-[#5ed29c]"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      )}
-
-      <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-7xl flex-col items-start justify-center px-6 pt-24 lg:px-10">
+      <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-7xl flex-col items-start justify-center px-6 pt-32 lg:px-10 lg:pt-40">
         <div className="liquid-glass flex h-[200px] w-[200px] translate-y-[-50px] flex-col justify-between rounded-2xl p-4">
           <span className="text-sm text-white/70">[ 2026 ]</span>
           <div className="flex flex-col gap-1.5">
             <p className="text-[18px] leading-[1.3] text-white">
-              Built on{" "}
-              <em
-                style={{ fontFamily: "var(--font-instrument-serif)" }}
-                className="italic"
-              >
-                Military
-              </em>{" "}
-              discipline
+              Built on <em className="italic">Military</em> discipline
             </p>
             <p className="text-[11px] leading-snug text-white/50">
               U.S. Army veteran turned full-stack developer. Active Secret
@@ -233,10 +132,7 @@ const Hero = () => {
           Active Secret Clearance
         </span>
 
-        <h1
-          style={{ fontFamily: "var(--font-inter)" }}
-          className="mt-3 max-w-4xl text-[40px] font-extrabold uppercase leading-[1.02] tracking-tight text-white sm:text-[52px] lg:text-[72px]"
-        >
+        <h1 className="mt-3 max-w-4xl text-[40px] font-extrabold uppercase leading-[1.02] tracking-tight text-white sm:text-[52px] lg:text-[72px]">
           <span
             className={`inline transition-opacity duration-300 ${
               headlineVisible ? "opacity-100" : "opacity-0"
@@ -256,7 +152,6 @@ const Hero = () => {
 
         <a
           href="#contact"
-          style={{ fontFamily: "var(--font-inter)" }}
           className="motion-safe:hover:-translate-y-0.5 mt-8 inline-flex items-center gap-2 rounded-full bg-[#5ed29c] px-6 py-3 text-xs font-bold uppercase tracking-[0.08em] text-[#070b0a] transition-transform duration-200"
         >
           Contact Me

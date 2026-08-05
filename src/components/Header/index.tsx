@@ -24,9 +24,7 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleStickyMenu);
   }, []);
 
-  if (pathUrl === "/") {
-    return null;
-  }
+  const isHome = pathUrl === "/";
 
   return (
     <header
@@ -39,14 +37,16 @@ const Header = () => {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10">
         <Link
           href="/"
-          className="flex items-center gap-2.5 text-sm font-extrabold uppercase tracking-[0.2em] text-white"
+          className={`flex items-center gap-2.5 font-extrabold uppercase tracking-[0.2em] text-white ${
+            isHome ? "text-base" : "text-sm"
+          }`}
         >
           <Image
             src="/favicon.svg"
             alt="Rowen Hutchins logo"
-            width={28}
-            height={28}
-            className="h-7 w-7 rounded-md"
+            width={isHome ? 40 : 28}
+            height={isHome ? 40 : 28}
+            className={`rounded-md ${isHome ? "h-10 w-10" : "h-7 w-7"}`}
           />
           Rowen Hutchins
         </Link>

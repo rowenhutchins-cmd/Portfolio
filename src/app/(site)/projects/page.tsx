@@ -1,4 +1,3 @@
-import Contact from "@/components/Contact";
 import ProjectCard from "@/components/Projects/ProjectCard";
 import { projectsData } from "@/components/Projects/projectsData";
 import { Github } from "lucide-react";
@@ -58,8 +57,6 @@ const ProjectsPage = () => {
           )}
         </div>
       </section>
-
-      <Contact />
     </>
   );
 };

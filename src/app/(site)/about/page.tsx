@@ -1,4 +1,3 @@
-import Contact from "@/components/Contact";
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -10,15 +9,23 @@ export const metadata: Metadata = {
 
 const experience = [
   {
+    role: "Coding Program",
+    org: "ERA Solutions",
+    period: "In Progress",
+    bullets: [
+      "Completed coursework in HTML, CSS, and JavaScript fundamentals, followed by React for building interactive, component-based interfaces.",
+      "Currently completing a MySQL and relational database course to round out a front-end-to-database skill set.",
+      "Structured, project-based curriculum focused on writing, testing, and debugging real code, hands-on preparation for an entry-level developer role.",
+    ],
+  },
+  {
     role: "Ammunition Specialist",
     org: "U.S. Army",
     period: "2021 to Present",
     bullets: [
-      "Managed inventory, tracking, and logistics for munitions and equipment across domestic and overseas assignments, including a 9-month deployment in Germany.",
-      "Enforced strict safety and compliance standards for handling and storing hazardous materials, maintaining a zero-incident record.",
-      "Trained and supervised fellow soldiers on operating procedures, safety protocols, and equipment handling.",
-      "Used digital tracking systems to maintain accurate, audit-ready inventory records, experience directly applicable to structured data and systems logic in software development.",
-      "Served as a Non-Commissioned Officer, leading, teaching, and holding direct responsibility for a team of soldiers.",
+      "Used digital inventory and tracking systems to maintain accurate, audit-ready records across domestic and overseas assignments, including a 9-month deployment in Germany, experience directly applicable to structured data and systems logic in software development.",
+      "Enforced strict technical safety and compliance standards for handling and storing hazardous materials, maintaining a zero-incident record through disciplined process and attention to detail.",
+      "Trained and supervised fellow soldiers on standard operating procedures and equipment handling as a Non-Commissioned Officer.",
     ],
   },
   {
@@ -26,11 +33,9 @@ const experience = [
     org: "Peachtree ATMs",
     period: "2019 to 2021",
     bullets: [
-      "Diagnosed and resolved hardware, software, and network issues on ATM units, including performing software resets and installing system updates.",
-      "Took over an additional service route on short notice, doubling coverage without missing a service call.",
-      "Maintained a consistent response time under 24 hours across all service requests.",
-      "Communicated directly with customers and vendors to explain issues, coordinate repairs, and ensure satisfaction.",
-      "Applied systematic troubleshooting to electronics and networking problems, a foundation now extended into debugging and problem-solving in code.",
+      "Diagnosed and resolved hardware, software, and network issues on ATM units, including performing software resets, installing system updates, and troubleshooting connectivity failures.",
+      "Applied systematic, root-cause troubleshooting to electronics and networking problems, the same debugging mindset now applied to writing and fixing code.",
+      "Maintained a consistent under-24-hour response time across an expanded coverage route.",
     ],
   },
 ];
@@ -170,8 +175,6 @@ const AboutPage = () => {
           </div>
         </div>
       </section>
-
-      <Contact />
     </>
   );
 };
