@@ -1,6 +1,3 @@
-import '@/styles/animate.css';
-import '@/styles/prism-vsc-dark-plus.css';
-import '@/styles/star.css';
 import '@/styles/tailwind.css';
 
 import Footer from '@/components/Footer';
@@ -25,7 +22,7 @@ export default function RootLayout({
       <body>
         <div className='isolate'>
           <NextTopLoader
-            color='#8646F4'
+            color='#5ed29c'
             crawlSpeed={300}
             showSpinner={false}
             shadow='none'
