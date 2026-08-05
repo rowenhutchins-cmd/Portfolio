@@ -7,14 +7,13 @@ const STREAM_URL =
   "https://stream.mux.com/tLkHO1qZoaaQOUeVWo8hEBeGQfySP02EPS02BmnNFyXys.m3u8";
 
 const HEADLINES = [
-  "Precision under pressure",
+  "Engineered under pressure",
   "Veteran discipline, developer precision",
 ];
 
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [headlineIndex, setHeadlineIndex] = useState(0);
-  const [headlineVisible, setHeadlineVisible] = useState(true);
 
   useEffect(() => {
     if (
@@ -25,11 +24,7 @@ const Hero = () => {
     }
 
     const rotate = setInterval(() => {
-      setHeadlineVisible(false);
-      setTimeout(() => {
-        setHeadlineIndex((index) => (index + 1) % HEADLINES.length);
-        setHeadlineVisible(true);
-      }, 300);
+      setHeadlineIndex((index) => (index + 1) % HEADLINES.length);
     }, 4000);
 
     return () => clearInterval(rotate);
@@ -132,15 +127,21 @@ const Hero = () => {
           Active Secret Clearance
         </span>
 
-        <h1 className="mt-3 max-w-4xl text-[40px] font-extrabold uppercase leading-[1.02] tracking-tight text-white sm:text-[52px] lg:text-[72px]">
-          <span
-            className={`inline transition-opacity duration-300 ${
-              headlineVisible ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            {HEADLINES[headlineIndex]}
-          </span>
-          <span className="text-[#5ed29c]">.</span>
+        <h1 className="mt-3 grid max-w-4xl text-[40px] font-extrabold uppercase leading-[1.02] tracking-tight text-white sm:text-[52px] lg:text-[72px]">
+          {HEADLINES.map((headline, index) => (
+            <span
+              key={headline}
+              aria-hidden={index !== headlineIndex}
+              className={`col-start-1 row-start-1 transition-all duration-700 ease-out ${
+                index === headlineIndex
+                  ? "opacity-100 blur-none"
+                  : "pointer-events-none opacity-0 blur-md"
+              }`}
+            >
+              {headline}
+              <span className="text-[#5ed29c]">.</span>
+            </span>
+          ))}
         </h1>
 
         <p className="mt-5 max-w-[512px] text-sm leading-relaxed text-white/70">
