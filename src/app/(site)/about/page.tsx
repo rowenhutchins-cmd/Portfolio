@@ -7,15 +7,21 @@ export const metadata: Metadata = {
     "Full-stack developer and U.S. Army veteran transitioning from military logistics and electronics troubleshooting into software.",
 };
 
+const eraProjects = [
+  { name: "Furniture Website", href: "/projects/furniture-website/index.html" },
+  { name: "Vintage Barbershop", href: "/projects/vintage-barbershop/index.html" },
+  { name: "The Beans Place", href: "/projects/the-beans-place/index.html" },
+];
+
 const experience = [
   {
     role: "Coding Program",
     org: "ERA Solutions",
     period: "In Progress",
     bullets: [
+      "shipped-projects",
       "Completed coursework in HTML, CSS, and JavaScript fundamentals, followed by React for building interactive, component-based interfaces.",
       "Currently completing a MySQL and relational database course to round out a front-end-to-database skill set.",
-      "Structured, project-based curriculum focused on writing, testing, and debugging real code, hands-on preparation for an entry-level developer role.",
     ],
   },
   {
@@ -23,9 +29,9 @@ const experience = [
     org: "U.S. Army",
     period: "2021 to Present",
     bullets: [
-      "Used digital inventory and tracking systems to maintain accurate, audit-ready records across domestic and overseas assignments, including a 9-month deployment in Germany, experience directly applicable to structured data and systems logic in software development.",
-      "Enforced strict technical safety and compliance standards for handling and storing hazardous materials, maintaining a zero-incident record through disciplined process and attention to detail.",
-      "Trained and supervised fellow soldiers on standard operating procedures and equipment handling as a Non-Commissioned Officer.",
+      "Trained and supervised fellow soldiers on standard operating procedures and equipment handling as a Non-Commissioned Officer, taking direct responsibility for their readiness and performance.",
+      "Enforced strict safety and compliance standards for handling and storing hazardous materials, maintaining a zero-incident record through discipline and attention to detail under pressure.",
+      "Used digital inventory and tracking systems to maintain accurate, audit-ready records across domestic and overseas assignments, including a 9-month deployment in Germany.",
     ],
   },
   {
@@ -78,20 +84,18 @@ const AboutPage = () => {
             <h1 className="text-heading-2 font-extrabold text-white">
               From ammunition logistics to application logic.
             </h1>
-            <p className="max-w-[62ch] text-base leading-relaxed text-white/70">
-              I am a full-stack developer combining hands-on experience in
-              React, JavaScript, and MySQL with the leadership, technical
-              troubleshooting, and logistics discipline I built during my
-              time in the U.S. Army. I hold an active Secret clearance and
-              I am looking for an entry-level full-stack or front-end
-              developer role where that combination is an asset.
+            <p className="max-w-[62ch] text-base font-semibold leading-relaxed text-white">
+              Aspiring developer currently in a coding bootcamp with ERA
+              Solutions, building projects and working toward an
+              entry-level developer role.
             </p>
             <p className="max-w-[62ch] text-base leading-relaxed text-white/70">
-              Before the Army, I spent two years as an ATM technician,
-              diagnosing hardware, software, and network failures in the
-              field under tight response windows. That same systematic
-              troubleshooting is what pulled me toward debugging and
-              building software in the first place.
+              I&apos;m combining hands-on experience in React, JavaScript,
+              and MySQL with the leadership, technical troubleshooting, and
+              logistics discipline I built in the U.S. Army and as an ATM
+              technician. I hold an active Secret clearance and am looking
+              for an entry-level full-stack or front-end developer role
+              where that combination is an asset.
             </p>
           </div>
         </div>
@@ -117,14 +121,37 @@ const AboutPage = () => {
                   </p>
                 </div>
                 <ul className="flex flex-col gap-3">
-                  {job.bullets.map((bullet) => (
-                    <li
-                      key={bullet}
-                      className="border-l border-white/10 pl-4 text-sm leading-relaxed text-white/70"
-                    >
-                      {bullet}
-                    </li>
-                  ))}
+                  {job.bullets.map((bullet) =>
+                    bullet === "shipped-projects" ? (
+                      <li
+                        key={bullet}
+                        className="border-l border-white/10 pl-4 text-sm leading-relaxed text-white/70"
+                      >
+                        Built and shipped three independent front-end
+                        projects as part of the program:{" "}
+                        {eraProjects.map((project, index) => (
+                          <span key={project.name}>
+                            <a
+                              href={project.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-accent hover:text-accent-dark"
+                            >
+                              {project.name}
+                            </a>
+                            {index < eraProjects.length - 1 ? ", " : "."}
+                          </span>
+                        ))}
+                      </li>
+                    ) : (
+                      <li
+                        key={bullet}
+                        className="border-l border-white/10 pl-4 text-sm leading-relaxed text-white/70"
+                      >
+                        {bullet}
+                      </li>
+                    ),
+                  )}
                 </ul>
               </div>
             ))}

@@ -26,11 +26,9 @@ const experience = [
     org: "U.S. Army",
     period: "2021 to Present",
     bullets: [
-      "Managed inventory, tracking, and logistics for munitions and equipment across domestic and overseas assignments, including a 9-month deployment in Germany.",
-      "Enforced strict safety and compliance standards for the handling and storage of hazardous materials, maintaining a zero-incident record.",
-      "Trained and supervised fellow soldiers on operating procedures, safety protocols, and equipment handling.",
-      "Used digital tracking systems to maintain accurate, audit-ready inventory records, experience directly applicable to working with structured data and systems logic in software development.",
-      "Served as a Non-Commissioned Officer, leading, teaching, and holding direct responsibility for a team of soldiers.",
+      "Trained and supervised fellow soldiers on standard operating procedures and equipment handling as a Non-Commissioned Officer, taking direct responsibility for their readiness and performance.",
+      "Enforced strict safety and compliance standards for handling and storing hazardous materials, maintaining a zero-incident record through discipline and attention to detail under pressure.",
+      "Used digital inventory and tracking systems to maintain accurate, audit-ready records across domestic and overseas assignments, including a 9-month deployment in Germany.",
     ],
   },
   {
@@ -38,12 +36,28 @@ const experience = [
     org: "Peachtree ATMs",
     period: "2019 to 2021",
     bullets: [
-      "Diagnosed and resolved hardware, software, and network issues on ATM units, including performing software resets and installing system updates.",
-      "Took over an additional service route on short notice, doubling coverage while family managed a health issue, without missing a service call.",
-      "Maintained a consistent response time of under 24 hours across all service requests.",
-      "Communicated directly with customers and vendors to explain issues, coordinate repairs, and ensure satisfaction.",
-      "Applied systematic troubleshooting to electronics and networking problems, a foundational skill set now being extended into debugging and problem-solving in code.",
+      "Diagnosed and resolved hardware, software, and network issues on ATM units, including performing software resets, installing system updates, and troubleshooting connectivity failures.",
+      "Applied systematic, root-cause troubleshooting to electronics and networking problems, the same debugging mindset now applied to writing and fixing code.",
+      "Maintained a consistent under-24-hour response time across an expanded coverage route.",
     ],
+  },
+];
+
+const projects = [
+  {
+    name: "Furniture Website",
+    stack: "HTML/CSS",
+    href: "/projects/furniture-website/index.html",
+  },
+  {
+    name: "Vintage Barbershop",
+    stack: "JavaScript",
+    href: "/projects/vintage-barbershop/index.html",
+  },
+  {
+    name: "The Beans Place",
+    stack: "React",
+    href: "/projects/the-beans-place/index.html",
   },
 ];
 
@@ -53,7 +67,7 @@ const ResumePage = () => {
       <div className="mx-auto max-w-4xl px-6 lg:px-10">
         <div className="flex flex-col gap-6 border-b border-white/10 pb-10 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-accent">
+            <span className="inline-flex items-center rounded-full border border-accent px-4 py-1.5 text-xs font-bold uppercase tracking-[0.08em] text-accent">
               Active Secret Security Clearance
             </span>
             <h1 className="mt-3 text-heading-2 font-extrabold text-white">
@@ -100,10 +114,11 @@ const ResumePage = () => {
               Objective
             </h2>
             <p className="max-w-[70ch] text-base leading-relaxed text-white/70">
-              Full-stack developer combining hands-on experience in React,
-              JavaScript, and MySQL with proven leadership, technical
-              troubleshooting, and logistics experience from the U.S. Army.
-              Seeking an entry-level full-stack or front-end developer role.
+              Seeking an entry-level full-stack or front-end developer role
+              where I can apply hands-on experience in React, JavaScript,
+              and MySQL alongside the leadership, troubleshooting, and
+              technical discipline built during my time in the U.S. Army
+              and as an ATM technician.
             </p>
           </div>
 
@@ -123,6 +138,40 @@ const ResumePage = () => {
                 </div>
               ))}
             </dl>
+          </div>
+
+          <div>
+            <h2 className="mb-3 text-sm font-bold uppercase tracking-[0.08em] text-accent">
+              Projects
+            </h2>
+            <p className="max-w-[70ch] text-sm leading-relaxed text-white/70">
+              Three independent coding projects, built during the ERA
+              Solutions program and deployed live from this site:{" "}
+              {projects.map((project, index) => (
+                <span key={project.name}>
+                  <a
+                    href={project.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent hover:text-accent-dark"
+                  >
+                    {project.name}
+                  </a>{" "}
+                  ({project.stack})
+                  {index < projects.length - 1 ? ", " : "."}
+                </span>
+              ))}{" "}
+              Source code for each is available at{" "}
+              <a
+                href="https://github.com/rowenhutchins-cmd"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:text-accent-dark"
+              >
+                github.com/rowenhutchins-cmd
+              </a>
+              .
+            </p>
           </div>
 
           <div>
@@ -153,33 +202,6 @@ const ResumePage = () => {
                 </div>
               ))}
             </div>
-          </div>
-
-          <div>
-            <h2 className="mb-3 text-sm font-bold uppercase tracking-[0.08em] text-accent">
-              Projects
-            </h2>
-            <p className="max-w-[70ch] text-sm leading-relaxed text-white/70">
-              Several original coding projects are deployed and viewable at{" "}
-              <a
-                href="https://rowenhutchins.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-accent hover:text-accent-dark"
-              >
-                rowenhutchins.com
-              </a>
-              , with source code available at{" "}
-              <a
-                href="https://github.com/rowenhutchins-cmd"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-accent hover:text-accent-dark"
-              >
-                github.com/rowenhutchins-cmd
-              </a>
-              .
-            </p>
           </div>
 
           <div>
