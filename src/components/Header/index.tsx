@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -38,8 +39,15 @@ const Header = () => {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10">
         <Link
           href="/"
-          className="text-sm font-extrabold uppercase tracking-[0.2em] text-white"
+          className="flex items-center gap-2.5 text-sm font-extrabold uppercase tracking-[0.2em] text-white"
         >
+          <Image
+            src="/favicon.svg"
+            alt="Rowen Hutchins logo"
+            width={28}
+            height={28}
+            className="h-7 w-7 rounded-md"
+          />
           Rowen Hutchins
         </Link>
 

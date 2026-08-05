@@ -1,4 +1,5 @@
 import { Github, Mail } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import menuData from "../Header/menuData";
 
@@ -15,7 +16,14 @@ const Footer = () => {
           >
             Rowen Hutchins
           </Link>
-          <p className="text-sm text-ink-muted">
+          <p className="flex items-center gap-2 text-sm text-ink-muted">
+            <Image
+              src="/favicon.svg"
+              alt="Rowen Hutchins logo"
+              width={16}
+              height={16}
+              className="h-4 w-4 rounded-[4px]"
+            />
             &copy; {year} Rowen Hutchins. Built with Next.js and Tailwind CSS.
           </p>
         </div>
