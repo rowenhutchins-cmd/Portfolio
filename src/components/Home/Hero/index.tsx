@@ -1,6 +1,13 @@
 "use client";
 
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  Briefcase,
+  Code2,
+  Palette,
+  ShieldCheck,
+  Wrench,
+} from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import FlyingEagle from "@/components/Eagle/FlyingEagle";
 import TreeBranch from "@/components/Eagle/TreeBranch";
@@ -11,6 +18,27 @@ const STREAM_URL =
 const HEADLINES = [
   "Engineered under pressure",
   "Veteran discipline, developer precision",
+];
+
+const FEATURES = [
+  {
+    icon: Palette,
+    title: "Custom Design",
+    description:
+      "Tailored layouts and UI built around your brand, not a recycled template.",
+  },
+  {
+    icon: Code2,
+    title: "Full-Stack Build",
+    description:
+      "React, JavaScript, and MySQL, shipped front-to-back and ready for production.",
+  },
+  {
+    icon: Wrench,
+    title: "Ongoing Support",
+    description:
+      "Updates, fixes, and iteration after launch, so the site keeps working for you.",
+  },
 ];
 
 const Hero = () => {
@@ -155,6 +183,43 @@ const Hero = () => {
           MySQL, shipped with the same discipline that kept a zero-incident
           record in the field.
         </p>
+
+        <div className="mt-6 flex flex-col items-start gap-4">
+          <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#5ed29c]">
+            What I Do
+          </span>
+
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#5ed29c]/40 bg-[#5ed29c]/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#5ed29c]">
+            <Briefcase size={13} />
+            Available for Hire
+          </span>
+
+          <h2 className="max-w-2xl text-2xl font-extrabold text-white sm:text-3xl">
+            I design and build websites.
+          </h2>
+
+          <p className="max-w-[60ch] text-sm leading-relaxed text-white/60">
+            Open to freelance projects and full-time roles, from a first
+            design concept to a fully shipped, production-ready site.
+          </p>
+        </div>
+
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          {FEATURES.map(({ icon: Icon, title, description }) => (
+            <div
+              key={title}
+              className="flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+            >
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#5ed29c]/10 text-[#5ed29c]">
+                <Icon size={18} />
+              </span>
+              <h3 className="text-base font-bold text-white">{title}</h3>
+              <p className="text-sm leading-relaxed text-white/60">
+                {description}
+              </p>
+            </div>
+          ))}
+        </div>
 
         <a
           href="#contact"

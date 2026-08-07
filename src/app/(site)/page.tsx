@@ -1,6 +1,5 @@
 import Contact from "@/components/Contact";
 import Hero from "@/components/Home/Hero";
-import Offering from "@/components/Home/Offering";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,7 +12,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Offering />
       <Contact />
     </>
   );

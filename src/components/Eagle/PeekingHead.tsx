@@ -19,7 +19,7 @@ const PeekingHead = () => {
       <svg
         width="44"
         height="44"
-        viewBox="0 0 8 8"
+        viewBox="0 0 9 8"
         shapeRendering="crispEdges"
         aria-hidden="true"
       >
@@ -35,9 +35,29 @@ const PeekingHead = () => {
           height="1"
           fill="#111111"
         />
-        <rect x="7" y="2" width="1" height="1" fill="#f2c94c" />
-        <rect x="7" y="3" width="1" height="1" fill="#e0a92e" />
+        <rect x="7" y="2" width="2" height="1" fill="#f2c94c" />
+        <rect x="7" y="3" width="2" height="1" fill="#e0a92e" />
       </svg>
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-0 top-20 min-w-[190px] whitespace-nowrap rounded-[10px] border border-accent/40 bg-ink-2 px-2.5 py-1.5 text-center text-[11px] font-bold tracking-[0.03em] text-accent"
+      >
+        <span className="relative block h-[14px] leading-[14px]">
+          <span className="eagle-bubble-a absolute inset-x-0 top-0 whitespace-nowrap">
+            * screech *
+          </span>
+          <span className="eagle-bubble-b absolute inset-x-0 top-0 whitespace-nowrap">
+            * freedom *
+          </span>
+          <span className="eagle-bubble-c absolute inset-x-0 top-0 whitespace-nowrap">
+            * hire him *
+          </span>
+          <span className="eagle-bubble-d absolute inset-x-0 top-0 whitespace-nowrap">
+            * he&apos;s a good developer *
+          </span>
+        </span>
+      </div>
 
       <style jsx>{`
         @keyframes eagle-blink {
@@ -54,6 +74,31 @@ const PeekingHead = () => {
           animation: eagle-blink 2.2s infinite;
           transform-box: fill-box;
           transform-origin: center;
+        }
+        @keyframes eagle-bubble-cycle {
+          0%,
+          24% {
+            opacity: 1;
+          }
+          25%,
+          100% {
+            opacity: 0;
+          }
+        }
+        :global(.eagle-bubble-a),
+        :global(.eagle-bubble-b),
+        :global(.eagle-bubble-c),
+        :global(.eagle-bubble-d) {
+          animation: eagle-bubble-cycle 14s steps(1) infinite;
+        }
+        :global(.eagle-bubble-b) {
+          animation-delay: -3.5s;
+        }
+        :global(.eagle-bubble-c) {
+          animation-delay: -7s;
+        }
+        :global(.eagle-bubble-d) {
+          animation-delay: -10.5s;
         }
       `}</style>
     </div>

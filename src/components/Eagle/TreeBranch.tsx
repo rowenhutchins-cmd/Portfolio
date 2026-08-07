@@ -85,6 +85,32 @@ const TreeBranch = () => {
             {/* feet, resting on the branch's top surface */}
             <rect x="17" y="11" width="2" height="2" fill="#f2c94c" />
             <rect x="21" y="11" width="2" height="2" fill="#f2c94c" />
+
+            {/* feather trail, dropped on landing */}
+            <rect
+              className="eagle-feather eagle-feather-1"
+              x="18"
+              y="9"
+              width="1"
+              height="1"
+              fill="#ffffff"
+            />
+            <rect
+              className="eagle-feather eagle-feather-2"
+              x="20"
+              y="10"
+              width="1"
+              height="1"
+              fill="#c0392b"
+            />
+            <rect
+              className="eagle-feather eagle-feather-3"
+              x="19"
+              y="8"
+              width="1"
+              height="1"
+              fill="#3b82c4"
+            />
           </g>
         )}
       </svg>
@@ -92,7 +118,7 @@ const TreeBranch = () => {
       {perched && (
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute right-[100px] top-[-26px] min-w-[104px] whitespace-nowrap rounded-[10px] border border-accent/40 bg-ink-2 px-2.5 py-1.5 text-center text-[11px] font-bold tracking-[0.03em] text-accent"
+          className="pointer-events-none absolute right-[100px] top-[-26px] min-w-[190px] whitespace-nowrap rounded-[10px] border border-accent/40 bg-ink-2 px-2.5 py-1.5 text-center text-[11px] font-bold tracking-[0.03em] text-accent"
         >
           <span className="relative block h-[14px] leading-[14px]">
             <span className="eagle-bubble-a absolute inset-x-0 top-0 whitespace-nowrap">
@@ -100,6 +126,12 @@ const TreeBranch = () => {
             </span>
             <span className="eagle-bubble-b absolute inset-x-0 top-0 whitespace-nowrap">
               * freedom *
+            </span>
+            <span className="eagle-bubble-c absolute inset-x-0 top-0 whitespace-nowrap">
+              * hire him *
+            </span>
+            <span className="eagle-bubble-d absolute inset-x-0 top-0 whitespace-nowrap">
+              * he&apos;s a good developer *
             </span>
           </span>
         </div>
@@ -143,19 +175,55 @@ const TreeBranch = () => {
         }
         @keyframes eagle-bubble-cycle {
           0%,
-          49% {
+          24% {
             opacity: 1;
           }
-          50%,
+          25%,
           100% {
             opacity: 0;
           }
         }
-        :global(.eagle-bubble-a) {
-          animation: eagle-bubble-cycle 7s steps(1) infinite;
+        :global(.eagle-bubble-a),
+        :global(.eagle-bubble-b),
+        :global(.eagle-bubble-c),
+        :global(.eagle-bubble-d) {
+          animation: eagle-bubble-cycle 14s steps(1) infinite;
         }
         :global(.eagle-bubble-b) {
-          animation: eagle-bubble-cycle 7s steps(1) infinite reverse;
+          animation-delay: -3.5s;
+        }
+        :global(.eagle-bubble-c) {
+          animation-delay: -7s;
+        }
+        :global(.eagle-bubble-d) {
+          animation-delay: -10.5s;
+        }
+        @keyframes eagle-feather-fall {
+          0% {
+            opacity: 1;
+            transform: translateY(0%);
+          }
+          85% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+            transform: translateY(2200%);
+          }
+        }
+        :global(.eagle-feather) {
+          transform-box: fill-box;
+          transform-origin: center;
+          animation: eagle-feather-fall 1.8s ease-in forwards;
+        }
+        :global(.eagle-feather-1) {
+          animation-delay: 0s;
+        }
+        :global(.eagle-feather-2) {
+          animation-delay: 0.15s;
+        }
+        :global(.eagle-feather-3) {
+          animation-delay: 0.3s;
         }
       `}</style>
     </div>
