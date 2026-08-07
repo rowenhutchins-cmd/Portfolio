@@ -86,30 +86,33 @@ const TreeBranch = () => {
             <rect x="17" y="11" width="2" height="2" fill="#f2c94c" />
             <rect x="21" y="11" width="2" height="2" fill="#f2c94c" />
 
-            {/* feather trail, dropped on landing */}
+            {/* feather trail, shed from the wing on landing */}
             <rect
               className="eagle-feather eagle-feather-1"
-              x="18"
-              y="9"
-              width="1"
-              height="1"
+              x="14"
+              y="4"
+              width="1.6"
+              height="0.6"
               fill="#ffffff"
+              transform="rotate(-30 14.8 4.3)"
             />
             <rect
               className="eagle-feather eagle-feather-2"
-              x="20"
-              y="10"
-              width="1"
-              height="1"
+              x="16"
+              y="7"
+              width="1.6"
+              height="0.6"
               fill="#c0392b"
+              transform="rotate(20 16.8 7.3)"
             />
             <rect
               className="eagle-feather eagle-feather-3"
-              x="19"
-              y="8"
-              width="1"
-              height="1"
-              fill="#3b82c4"
+              x="15"
+              y="5.5"
+              width="1.6"
+              height="0.6"
+              fill="#1e3a5f"
+              transform="rotate(-10 15.8 5.8)"
             />
           </g>
         )}
@@ -212,32 +215,84 @@ const TreeBranch = () => {
         :global(.eagle-bubble-f) {
           animation-delay: -17.5s;
         }
-        @keyframes eagle-feather-fall {
+        @keyframes eagle-feather-fall-1 {
           0% {
             opacity: 1;
-            transform: translateY(0%);
+            transform: translate(0%, 0%) rotate(-30deg);
           }
-          85% {
+          10% {
+            transform: translate(-260%, 955%) rotate(-55deg);
+          }
+          20% {
+            transform: translate(120%, 2100%) rotate(-20deg);
+          }
+          28.3% {
             opacity: 1;
+            transform: translate(-180%, 3245%) rotate(-45deg);
           }
+          33.3%,
           100% {
             opacity: 0;
-            transform: translateY(2200%);
+            transform: translate(80%, 4200%) rotate(-25deg);
+          }
+        }
+        @keyframes eagle-feather-fall-2 {
+          0% {
+            opacity: 1;
+            transform: translate(0%, 0%) rotate(20deg);
+          }
+          10% {
+            transform: translate(220%, 807%) rotate(50deg);
+          }
+          20% {
+            transform: translate(-140%, 1766%) rotate(10deg);
+          }
+          28.3% {
+            opacity: 1;
+            transform: translate(200%, 2775%) rotate(40deg);
+          }
+          33.3%,
+          100% {
+            opacity: 0;
+            transform: translate(-100%, 3700%) rotate(15deg);
+          }
+        }
+        @keyframes eagle-feather-fall-3 {
+          0% {
+            opacity: 1;
+            transform: translate(0%, 0%) rotate(-10deg);
+          }
+          10% {
+            transform: translate(-180%, 922%) rotate(-35deg);
+          }
+          20% {
+            transform: translate(160%, 2039%) rotate(5deg);
+          }
+          28.3% {
+            opacity: 1;
+            transform: translate(-140%, 3103%) rotate(-30deg);
+          }
+          33.3%,
+          100% {
+            opacity: 0;
+            transform: translate(120%, 3900%) rotate(-5deg);
           }
         }
         :global(.eagle-feather) {
           transform-box: fill-box;
           transform-origin: center;
-          animation: eagle-feather-fall 1.8s ease-in forwards;
         }
         :global(.eagle-feather-1) {
+          animation: eagle-feather-fall-1 6s ease-in infinite;
           animation-delay: 0s;
         }
         :global(.eagle-feather-2) {
-          animation-delay: 0.15s;
+          animation: eagle-feather-fall-2 6s ease-in infinite;
+          animation-delay: 1.5s;
         }
         :global(.eagle-feather-3) {
-          animation-delay: 0.3s;
+          animation: eagle-feather-fall-3 6s ease-in infinite;
+          animation-delay: 3s;
         }
       `}</style>
     </div>

@@ -5,7 +5,7 @@ import type { Project } from "./projectsData";
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <div className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]">
-      {project.image && (
+      {project.image ? (
         <div className="relative aspect-video w-full">
           <Image
             src={project.image}
@@ -14,6 +14,20 @@ const ProjectCard = ({ project }: { project: Project }) => {
             className="object-cover"
           />
         </div>
+      ) : (
+        project.href && (
+          <div className="relative aspect-video w-full overflow-hidden bg-white/[0.02]">
+            <iframe
+              src={project.href}
+              title={`${project.title} preview`}
+              tabIndex={-1}
+              aria-hidden="true"
+              loading="lazy"
+              sandbox="allow-same-origin allow-scripts"
+              className="pointer-events-none absolute left-0 top-0 h-[400%] w-[400%] origin-top-left scale-[0.25] border-0"
+            />
+          </div>
+        )
       )}
 
       <div className="flex flex-1 flex-col gap-4 p-6">

@@ -1,4 +1,4 @@
-import { Github, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import menuData from "../Header/menuData";
@@ -49,6 +49,15 @@ const Footer = () => {
             className="text-white/70 transition-colors duration-200 hover:text-accent"
           >
             <Github size={20} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/rowen-hutchins-546320428"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="text-white/70 transition-colors duration-200 hover:text-accent"
+          >
+            <Linkedin size={20} />
           </a>
           <a
             href="mailto:rowen.hutchins@gmail.com"
