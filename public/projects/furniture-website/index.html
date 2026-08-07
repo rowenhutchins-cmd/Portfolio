@@ -32,7 +32,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba (0, 0, 0, 0.4);
+        background: rgba(0, 0, 0, 0.4);
         z-index: 1;
       }
       .hero-content {
@@ -43,7 +43,7 @@
         top: 50%;
         transform: translateY(-50%);
         padding: 0 20px;
-        text-shadow: 0 2px 10px rgba (0, 0, 0, 0.7);
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
       }
       .hero-content h1 {
         font-size: 3rem;
@@ -56,11 +56,12 @@
       .button-group {
         display: flex;
         justify-content: center;
-        gap: 30px;
+        flex-wrap: wrap;
+        gap: 20px;
       }
       .btn {
         text-decoration: none;
-        background-color: rgba (255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.2);
         border: 2px solid white;
         color: white;
         padding: 10px 25px;
@@ -93,7 +94,7 @@
       .card {
         background-color: white;
         border-radius: 20px;
-        box-shadow: 0 4px 15px rgba (0, 0, 0, 0.1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         overflow: hidden;
         transform: translateY(40px);
         opacity: 0;
@@ -123,7 +124,7 @@
         color: #222;
       }
       .card-content p {
-        font-size: 1 rem;
+        font-size: 1rem;
         color: #555;
         margin-bottom: 15px;
       }
@@ -164,6 +165,25 @@
       .footer-links a:hover {
         color: #007bff;
       }
+      @media (max-width: 640px) {
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+        .hero-content p {
+          font-size: 1rem;
+        }
+        .btn {
+          padding: 10px 18px;
+          font-size: 1rem;
+        }
+        .card-section {
+          padding: 80px 20px;
+        }
+        .card-section h2 {
+          font-size: 1.5rem;
+        }
+      }
+
       .back-to-portfolio {
         position: fixed;
         top: 20px;
@@ -211,8 +231,10 @@
         <p>
           We design and create an inviting showcase enviornment for parties.
         </p>
-        <a href="#cards" class="btn">Learn More</a>
-        <a href="auth/register.html" class="btn">Login to view our showcase</a>
+        <div class="button-group">
+          <a href="#cards" class="btn">Learn More</a>
+          <a href="auth/register.html" class="btn">Login to view our showcase</a>
+        </div>
       </div>
     </section>
     <!--Card Section-->
