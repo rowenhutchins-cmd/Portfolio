@@ -54,6 +54,9 @@ const PeekingHead = () => {
             * hire him *
           </span>
           <span className="eagle-bubble-d absolute inset-x-0 top-0 whitespace-nowrap">
+            * screech *
+          </span>
+          <span className="eagle-bubble-e absolute inset-x-0 top-0 whitespace-nowrap">
             * he&apos;s a good developer *
           </span>
         </span>
@@ -77,10 +80,10 @@ const PeekingHead = () => {
         }
         @keyframes eagle-bubble-cycle {
           0%,
-          24% {
+          19% {
             opacity: 1;
           }
-          25%,
+          20%,
           100% {
             opacity: 0;
           }
@@ -88,8 +91,9 @@ const PeekingHead = () => {
         :global(.eagle-bubble-a),
         :global(.eagle-bubble-b),
         :global(.eagle-bubble-c),
-        :global(.eagle-bubble-d) {
-          animation: eagle-bubble-cycle 14s steps(1) infinite;
+        :global(.eagle-bubble-d),
+        :global(.eagle-bubble-e) {
+          animation: eagle-bubble-cycle 17.5s steps(1) infinite;
         }
         :global(.eagle-bubble-b) {
           animation-delay: -3.5s;
@@ -99,6 +103,9 @@ const PeekingHead = () => {
         }
         :global(.eagle-bubble-d) {
           animation-delay: -10.5s;
+        }
+        :global(.eagle-bubble-e) {
+          animation-delay: -14s;
         }
       `}</style>
     </div>
