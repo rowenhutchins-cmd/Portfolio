@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  ArrowRight,
   Briefcase,
   Code2,
   Palette,
@@ -220,14 +219,6 @@ const Hero = () => {
             </div>
           ))}
         </div>
-
-        <a
-          href="#contact"
-          className="motion-safe:hover:-translate-y-0.5 mt-8 inline-flex items-center gap-2 rounded-full bg-[#5ed29c] px-6 py-3 text-xs font-bold uppercase tracking-[0.08em] text-[#070b0a] transition-transform duration-200"
-        >
-          Contact Me
-          <ArrowRight size={16} />
-        </a>
       </div>
 
       <style jsx>{`
