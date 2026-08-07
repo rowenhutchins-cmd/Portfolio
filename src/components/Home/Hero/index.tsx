@@ -2,6 +2,8 @@
 
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import FlyingEagle from "@/components/Eagle/FlyingEagle";
+import TreeBranch from "@/components/Eagle/TreeBranch";
 
 const STREAM_URL =
   "https://stream.mux.com/tLkHO1qZoaaQOUeVWo8hEBeGQfySP02EPS02BmnNFyXys.m3u8";
@@ -107,6 +109,9 @@ const Hero = () => {
           filter="url(#heroGlow)"
         />
       </svg>
+
+      <TreeBranch />
+      <FlyingEagle />
 
       <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-7xl flex-col items-start justify-center px-6 pt-32 lg:px-10 lg:pt-40">
         <div className="liquid-glass flex h-[200px] w-[200px] translate-y-[-50px] flex-col justify-between rounded-2xl p-4">

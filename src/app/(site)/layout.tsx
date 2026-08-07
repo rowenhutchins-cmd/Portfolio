@@ -1,5 +1,7 @@
 import '@/styles/tailwind.css';
 
+import { EagleProvider } from '@/components/Eagle/EagleContext';
+import PeekingHead from '@/components/Eagle/PeekingHead';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -20,22 +22,25 @@ export default function RootLayout({
   return (
     <html lang='en' className={plusJakarta.className}>
       <body>
-        <div className='isolate'>
-          <NextTopLoader
-            color='#5ed29c'
-            crawlSpeed={300}
-            showSpinner={false}
-            shadow='none'
-          />
+        <EagleProvider>
+          <div className='isolate'>
+            <NextTopLoader
+              color='#5ed29c'
+              crawlSpeed={300}
+              showSpinner={false}
+              shadow='none'
+            />
 
-          <Header />
-          {children}
-          <Footer />
+            <Header />
+            {children}
+            <Footer />
 
-          <ToasterContext />
-        </div>
+            <ToasterContext />
+          </div>
 
-        <ScrollToTop />
+          <PeekingHead />
+          <ScrollToTop />
+        </EagleProvider>
       </body>
     </html>
   );
