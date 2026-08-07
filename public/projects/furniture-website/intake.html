@@ -4,100 +4,139 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us - Intake Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="CSS/styles.css" />
     <style>
-      body {
-        background-color: #f5f5f5;
-        font-family: Arial, sans-serif;
-        margin: 0;
+      .back-to-portfolio {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 2147483647;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: #5ed29c;
+        background-color: rgba(7, 11, 10, 0.85);
+        border: 1.5px solid #5ed29c;
+        padding: 10px 20px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        border-radius: 999px;
+        backdrop-filter: blur(4px);
+        transition: background-color 0.2s ease;
+      }
+      .back-to-portfolio:hover {
+        background-color: rgba(94, 210, 156, 0.12);
       }
 
-      header {
-        background-color: lightblue;
-        padding: 30px;
+      .intake-header {
+        background-color: var(--color-olive);
+        padding: 44px 20px;
         text-align: center;
       }
 
-      header h1 {
-        margin: 0;
-        font-size: 36px;
+      .intake-header h1 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: clamp(2rem, 4vw, 2.6rem);
         color: #fff;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
       }
 
-      main {
-        max-width: 800px;
-        margin: 40px auto;
-        background: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      main.intake-main {
+        max-width: 640px;
+        margin: 48px auto;
+        background: var(--color-surface);
+        padding: 36px 32px 32px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
       }
 
-      h2 {
+      main.intake-main h2 {
+        font-family: var(--font-display);
+        font-weight: 600;
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
+        color: var(--color-text);
       }
 
-      label {
+      .intake-main label {
         display: block;
-        margin-top: 15px;
-        font-weight: bold;
+        margin-top: 16px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--color-text);
       }
 
-      input {
+      .intake-main input {
         width: 100%;
-        padding: 12px;
+        padding: 12px 14px;
         margin-top: 6px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        font-size: 16px;
+        border: 1px solid var(--color-line);
+        border-radius: 10px;
+        font-family: var(--font-body);
+        font-size: 1rem;
+        color: var(--color-text);
+        background-color: var(--color-bg);
       }
 
-      button {
-        margin-top: 20px;
+      .intake-main input:focus {
+        outline: 2px solid var(--color-olive);
+        outline-offset: 1px;
+      }
+
+      .intake-main button {
+        margin-top: 24px;
         width: 100%;
         padding: 14px;
-        background-color: lightblue;
-        color: white;
+        background-color: var(--color-terracotta);
+        color: #fff;
         border: none;
-        border-radius: 20px;
-        font-size: 18px;
-        font-weight: bold;
+        border-radius: 999px;
+        font-family: var(--font-body);
+        font-size: 1rem;
+        font-weight: 600;
         cursor: pointer;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-        transition:
-          transform 0.2s,
-          box-shadow 0.2s;
+        transition: background-color 0.2s ease, transform 0.2s ease;
       }
 
-      button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+      .intake-main button:hover {
+        background-color: var(--color-terracotta-dark);
+        transform: translateY(-2px);
       }
 
       .back-link {
         display: block;
         margin-top: 20px;
         text-align: center;
-        color: lightblue;
-        font-weight: bold;
+        color: var(--color-olive);
+        font-weight: 600;
         text-decoration: none;
       }
 
-      footer {
-        background-color: lightgray;
-        text-align: center;
-        padding: 15px;
-        margin-top: 40px;
-        font-size: 14px;
+      .back-link:hover {
+        text-decoration: underline;
       }
     </style>
   </head>
   <body>
-    <header>
+    <a
+      href="/"
+      class="back-to-portfolio"
+      onclick="event.preventDefault(); window.close(); setTimeout(function () { window.location.href = '/'; }, 400);"
+      >&larr; Back to Portfolio</a
+    >
+    <header class="intake-header">
       <h1>Contact Us</h1>
     </header>
-    <main>
+    <main class="intake-main">
       <h2>Intake Form</h2>
       <form action="#" method="post">
         <label for="firstName">First Name</label>
@@ -161,8 +200,12 @@
       <a href="index.html" class="back-link">&larr; Back to Home</a>
     </main>
 
-    <footer>
-      <p>&copy; 2026 Your Site Name. All rights reserved.</p>
+    <footer class="footer">
+      <p>&copy; <span id="year"></span> Your Site Name. All rights reserved.</p>
     </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>

@@ -51,7 +51,11 @@
 
     <header class="site-header">
         <div class="container header-inner">
-            <a href="assets/logo.png" class="logo" id="logo">Vintage Barbershop</a>
+            <a href="#hero" class="logo" id="logo">
+                <span class="logo-badge">
+                    <img src="assets/logo.png" alt="Vintage Barbershop" />
+                </span>
+            </a>
  
             <nav class="nav" id="nav">
                 <!-- <a href="#features" class="nav-link">Services</a>
@@ -117,8 +121,26 @@
           Quality grooming services designed for comfort, style, and confidence.
         </p>
 
-        <div class="feature-grid" id="featureGrid">
-          
+        <div class="feature-carousel">
+          <button
+            class="carousel-arrow carousel-arrow-prev"
+            id="featurePrevBtn"
+            type="button"
+            aria-label="Scroll services left"
+          >‹</button>
+
+          <div class="feature-grid" id="featureGrid"></div>
+
+          <button
+            class="carousel-arrow carousel-arrow-next"
+            id="featureNextBtn"
+            type="button"
+            aria-label="Scroll services right"
+          >›</button>
+        </div>
+
+        <div class="carousel-progress-track" id="featureProgressTrack">
+          <div class="carousel-progress-fill" id="featureProgressFill"></div>
         </div>
       </div>
     </section>

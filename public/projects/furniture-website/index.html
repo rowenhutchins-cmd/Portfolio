@@ -4,186 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Furniture Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="CSS/styles.css" />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      .hero {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        overflow: hidden;
-      }
-      .hero video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        min-width: 100%;
-        min-height: 100%;
-        object-fit: cover;
-        z-index: 0;
-      }
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.4);
-        z-index: 1;
-      }
-      .hero-content {
-        position: relative;
-        z-index: 2;
-        color: white;
-        text-align: center;
-        top: 50%;
-        transform: translateY(-50%);
-        padding: 0 20px;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-      }
-      .hero-content h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-      }
-      .hero-content p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-      }
-      .button-group {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-      .btn {
-        text-decoration: none;
-        background-color: rgba(255, 255, 255, 0.2);
-        border: 2px solid white;
-        color: white;
-        padding: 10px 25px;
-        font-size: 1.1rem;
-        border-radius: 30px;
-        transition: all 0.3s ease;
-      }
-      .btn:hover {
-        background-color: white;
-        color: black;
-      }
-      .card-section {
-        background-color: #f5f5f5;
-        padding: 180px 50px;
-        text-align: center;
-      }
-      .card-section h2 {
-        font-size: 2rem;
-        margin-bottom: 40px;
-        color: #333;
-      }
-      .card-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        justify-content: center;
-        gap: 30px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-      .card {
-        background-color: white;
-        border-radius: 20px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        transform: translateY(40px);
-        opacity: 0;
-        transition:
-          transform 0.6s ease,
-          opacity 0.6s ease;
-      }
-      .card.show {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      }
-      .card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-      }
-      .card-content {
-        padding: 10px;
-      }
-      .card-content h2 {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-        color: #222;
-      }
-      .card-content p {
-        font-size: 1rem;
-        color: #555;
-        margin-bottom: 15px;
-      }
-      .card-content a {
-        text-decoration: none;
-        color: white;
-        background-color: #007bff;
-        padding: 10px 20px;
-        border-radius: 5px;
-        display: inline-block;
-        transition: background-color 0.3s ease;
-      }
-      .card-content a:hover {
-        background-color: #0056b3;
-      }
-      .footer {
-        background-color: #000;
-        color: white;
-        width: 100%;
-        padding: 40px 0px;
-        text-align: center;
-        position: relative;
-      }
-      .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-      .footer-links {
-        margin-top: 15px;
-      }
-      .footer-links a {
-        color: white;
-        text-decoration: none;
-        margin: 0 15px;
-        font-size: 1rem;
-        transition: color 0.3s ease;
-      }
-      .footer-links a:hover {
-        color: #007bff;
-      }
-      @media (max-width: 640px) {
-        .hero-content h1 {
-          font-size: 2rem;
-        }
-        .hero-content p {
-          font-size: 1rem;
-        }
-        .btn {
-          padding: 10px 18px;
-          font-size: 1rem;
-        }
-        .card-section {
-          padding: 80px 20px;
-        }
-        .card-section h2 {
-          font-size: 1.5rem;
-        }
-      }
-
       .back-to-portfolio {
         position: fixed;
         top: 20px;
@@ -227,13 +55,15 @@
         Your browser does not support the video tag.
       </video>
       <div class="hero-content">
-        <h1>Your Place for Everything Funiture and Landscape</h1>
+        <h1>Your Place for Everything Furniture and Landscape</h1>
         <p>
-          We design and create an inviting showcase enviornment for parties.
+          We design and create an inviting showcase environment for parties.
         </p>
         <div class="button-group">
           <a href="#cards" class="btn">Learn More</a>
-          <a href="auth/register.html" class="btn">Login to view our showcase</a>
+          <a href="auth/register.html" class="btn btn-primary"
+            >Login to view our showcase</a
+          >
         </div>
       </div>
     </section>
@@ -248,8 +78,11 @@
             alt="Serene backyard with patio furniture"
           />
           <div class="card-content">
-            <h3>Serene Backyard with Patio Furniture</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <h3>Serene Backyard Patio Sets</h3>
+            <p>
+              Weather-ready seating and dining pieces arranged for easy
+              conversation and relaxed outdoor evenings.
+            </p>
             <a href="#">Read More</a>
           </div>
         </div>
@@ -261,8 +94,11 @@
             alt="Comfortable outdoor lounge under a gazebo"
           />
           <div class="card-content">
-            <h3>Comfortable Outdoor Lounge Under a Gazebo</h3>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            <h3>Gazebo Lounge Collections</h3>
+            <p>
+              Deep-cushioned lounge furniture staged under cover, built for
+              long afternoons and easy entertaining.
+            </p>
             <a href="#">Read More</a>
           </div>
         </div>
@@ -271,13 +107,13 @@
         <div class="card">
           <img
             src="images/Hero Landscaping BG11.jpeg"
-            alt="Garden Walkway Leading to a Cozy Seating Area"
+            alt="Garden walkway leading to a cozy seating area"
           />
           <div class="card-content">
-            <h3>Garden Walkway Leading to a Cozy Seating Area</h3>
+            <h3>Garden Walkway Design</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas,
-              voluptate!
+              Landscaping and pathway layouts that lead guests naturally from
+              the yard into a dedicated seating area.
             </p>
             <a href="#">Read More</a>
           </div>
@@ -287,13 +123,13 @@
         <div class="card">
           <img
             src="images/Outside Landscape Card.jpeg"
-            alt="Ambient Outdoor Seating Area with String Lights"
+            alt="Ambient outdoor seating area with string lights"
           />
           <div class="card-content">
-            <h3>Ambient Outdoor Seating Area with String Lights</h3>
+            <h3>Ambient Evening Seating</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas,
-              voluptate!
+              String lighting and layered textures that turn a plain patio
+              into a warm, inviting evening space.
             </p>
             <a href="#">Read More</a>
           </div>
@@ -304,7 +140,8 @@
     <footer class="footer">
       <div class="footer-content">
         <p>
-          &copy; <span id="year"></span>Your Company Name. All Rights Reserved
+          &copy; <span id="year"></span> Your Company Name. All Rights
+          Reserved
         </p>
         <div class="footer-links">
           <a href="#about">About Us</a>

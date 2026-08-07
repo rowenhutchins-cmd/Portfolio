@@ -14,6 +14,14 @@ const mobileMenu = document.getElementById("mobileMenu");
 
 const featureGrid = document.getElementById("featureGrid");
 
+const featurePrevBtn = document.getElementById("featurePrevBtn");
+
+const featureNextBtn = document.getElementById("featureNextBtn");
+
+const featureProgressFill = document.getElementById("featureProgressFill");
+
+const featureProgressTrack = document.getElementById("featureProgressTrack");
+
 const hoursList = document.getElementById("hoursList");
 
 const ctaBtn = document.getElementById("ctaBtn");
@@ -186,6 +194,8 @@ const formatHour = (hour) => {
 };
 
 let isMenuOpen = false;
+
+let carouselDragMoved = false;
 
 const toggleMobileMenu = () => {
   if (!mobileMenu) return;
@@ -370,60 +380,122 @@ const checkIfOpen = () => {
   }
 };
 
-// ----- Scroll Shift Cards -----
-const setupScrollShiftCards = () => {
+// ----- Services Carousel -----
+const setupFeatureCarousel = () => {
   if (!featureGrid) return;
 
-  let lastScrollY = window.scrollY;
-  let currentX = 0;
-  let ticking = false;
+  const updateCarouselState = () => {
+    const maxScroll = featureGrid.scrollWidth - featureGrid.clientWidth;
+    const ratio = maxScroll > 0 ? featureGrid.scrollLeft / maxScroll : 0;
 
-  const getVisibleWidth = () => {
-    const parent = featureGrid.parentElement;
-    return parent ? parent.clientWidth : window.innerWidth;
-  };
-
-  const getMaxShift = () => {
-    return Math.max(0, featureGrid.scrollWidth - getVisibleWidth());
-  };
-
-  const updateCardTrack = () => {
-    const currentScrollY = window.scrollY;
-    const scrollDelta = currentScrollY - lastScrollY;
-
-    if (scrollDelta === 0) {
-      ticking = false;
-      return;
+    if (featureProgressFill) {
+      featureProgressFill.style.width = `${Math.min(100, Math.max(0, ratio * 100))}%`;
     }
 
-    currentX -= scrollDelta * 0.3;
-
-    const maxShift = getMaxShift();
-
-    if (currentX < -maxShift) currentX = -maxShift;
-    if (currentX > 0) currentX = 0;
-
-    featureGrid.style.transform = `translateX(${currentX}px)`;
-
-    lastScrollY = currentScrollY;
-    ticking = false;
+    if (featurePrevBtn) featurePrevBtn.disabled = featureGrid.scrollLeft <= 4;
+    if (featureNextBtn) featureNextBtn.disabled = featureGrid.scrollLeft >= maxScroll - 4;
   };
 
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      window.requestAnimationFrame(updateCardTrack);
-      ticking = true;
+  const scrollByCard = (direction) => {
+    const card = featureGrid.querySelector(".feature-card");
+    const step = card
+      ? card.getBoundingClientRect().width + 24
+      : featureGrid.clientWidth * 0.8;
+
+    featureGrid.scrollBy({ left: step * direction });
+    updateCarouselState();
+  };
+
+  if (featurePrevBtn) {
+    featurePrevBtn.addEventListener("click", () => scrollByCard(-1));
+  }
+
+  if (featureNextBtn) {
+    featureNextBtn.addEventListener("click", () => scrollByCard(1));
+  }
+
+  featureGrid.addEventListener("scroll", updateCarouselState);
+
+  window.addEventListener("resize", updateCarouselState);
+
+  // Progress track doubles as a scrubber: click or drag it to seek directly
+  if (featureProgressTrack) {
+    const seekToClientX = (clientX) => {
+      const rect = featureProgressTrack.getBoundingClientRect();
+      const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+      const maxScroll = featureGrid.scrollWidth - featureGrid.clientWidth;
+
+      featureGrid.scrollLeft = ratio * maxScroll;
+      updateCarouselState();
+    };
+
+    let isScrubbing = false;
+
+    featureProgressTrack.addEventListener("pointerdown", (event) => {
+      isScrubbing = true;
+      seekToClientX(event.clientX);
+
+      try {
+        featureProgressTrack.setPointerCapture(event.pointerId);
+      } catch (err) {
+        // Capture is a nice-to-have for smooth dragging; seeking above
+        // already happened, so a capture failure isn't fatal.
+      }
+    });
+
+    featureProgressTrack.addEventListener("pointermove", (event) => {
+      if (!isScrubbing) return;
+      seekToClientX(event.clientX);
+    });
+
+    const stopScrub = () => {
+      isScrubbing = false;
+    };
+
+    featureProgressTrack.addEventListener("pointerup", stopScrub);
+    featureProgressTrack.addEventListener("pointercancel", stopScrub);
+  }
+
+  // Pointer drag-to-scroll for mouse users (touch/pen keep native scrolling)
+  let isDragging = false;
+  let dragStartX = 0;
+  let scrollStartX = 0;
+
+  featureGrid.addEventListener("pointerdown", (event) => {
+    if (event.pointerType !== "mouse") return;
+
+    isDragging = true;
+    carouselDragMoved = false;
+    featureGrid.classList.add("is-dragging");
+    dragStartX = event.clientX;
+    scrollStartX = featureGrid.scrollLeft;
+
+    try {
+      featureGrid.setPointerCapture(event.pointerId);
+    } catch (err) {
+      // Capture is a nice-to-have; dragging still works via pointermove.
     }
   });
 
-  window.addEventListener("resize", () => {
-    const maxShift = getMaxShift();
+  featureGrid.addEventListener("pointermove", (event) => {
+    if (!isDragging) return;
 
-    if (currentX < -maxShift) currentX = -maxShift;
-    if (currentX > 0) currentX = 0;
+    const delta = event.clientX - dragStartX;
+    if (Math.abs(delta) > 6) carouselDragMoved = true;
 
-    featureGrid.style.transform = `translateX(${currentX}px)`;
+    featureGrid.scrollLeft = scrollStartX - delta;
   });
+
+  const endDrag = () => {
+    isDragging = false;
+    featureGrid.classList.remove("is-dragging");
+  };
+
+  featureGrid.addEventListener("pointerup", endDrag);
+  featureGrid.addEventListener("pointercancel", endDrag);
+  featureGrid.addEventListener("pointerleave", endDrag);
+
+  updateCarouselState();
 };
 
 // ----- Event Listeners -----
@@ -459,6 +531,8 @@ if (callBtn) {
 
 if (featureGrid) {
   featureGrid.addEventListener("click", (event) => {
+    if (carouselDragMoved) return;
+
     const clickedButton = event.target.closest(".service-details-btn");
     if (!clickedButton) return;
 
@@ -485,7 +559,7 @@ document.addEventListener("keydown", (event) => {
 setCurrentYear();
 renderNavigation();
 renderServices();
-setupScrollShiftCards();
+setupFeatureCarousel();
 renderHours();
 renderContactInfo();
 checkIfOpen();

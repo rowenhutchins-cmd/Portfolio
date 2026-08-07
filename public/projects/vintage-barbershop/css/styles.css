@@ -61,19 +61,28 @@ body {
     gap: 16px;
 }
 
-/* Logo image sizing (fits inside navbar) */
+/* Logo badge (circular crop of the square source art) */
 .logo {
     display: flex;
     align-items: center;
-    gap: 3px;
 }
 
-.logo img {
-    height: 65px; /* Set a fixed height for the logo */
-    width: auto;
-    max-width: 120px;  /* Prevent logo from being too large on wider screens */
-    object-fit: contain;
-    display: block;  /* Remove extra space below image */
+.logo-badge {
+    display: block;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--color-beige);
+    flex-shrink: 0;
+}
+
+.logo-badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.32);
+    display: block;
 }
 
 .nav {
@@ -239,15 +248,30 @@ body {
     max-width: 70ch;
 }
 
-/* ---- Features Grid ---- */
+/* ---- Features Carousel ---- */
+.feature-carousel {
+    position: relative;
+}
+
 .feature-grid {
     display: flex;
-    flex-wrap: wrap;
-    grid-template-columns: 0;
-    width: max-content;
-    will-change: transform;
-    transition: transform 0.2s ease-out;
     gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    cursor: grab;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.feature-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.feature-grid.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    scroll-behavior: auto;
 }
 
 .features .container {
@@ -257,7 +281,13 @@ body {
 }
 
 .feature-card {
-    flex: 0 1 320px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    /* Scales with viewport (not a fixed px) so 6 cards always add up to well
+       over 100% of the viewport width — the row stays scrollable on any
+       screen size instead of just fitting entirely on wide monitors. */
+    flex-basis: max(280px, 30vw);
+    scroll-snap-align: start;
     background-color: var(--color-beige);
     border-radius: var(--radius);
     padding: 14px;
@@ -265,8 +295,74 @@ body {
     border: 1px solid rgba(58,45,40,0.12);
 }
 
-.features {
+/* ---- Carousel Arrows ---- */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.22);
+    border: 2px solid var(--color-beige);
+    opacity: 1;
+    z-index: 2;
+    transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.carousel-arrow:hover {
+    opacity: 1;
+}
+
+.carousel-arrow:active {
+    transform: translateY(-50%) scale(0.94);
+}
+
+.carousel-arrow[disabled] {
+    opacity: 0.25;
+    cursor: default;
+    pointer-events: none;
+}
+
+.carousel-arrow-prev {
+    left: 12px;
+}
+
+.carousel-arrow-next {
+    right: 12px;
+}
+
+/* ---- Carousel Progress Bar (also a clickable/draggable scrubber) ---- */
+.carousel-progress-track {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 480px;
+    height: 10px;
+    border-radius: 999px;
+    background-color: rgba(58,45,40,0.28);
+    border: 1px solid rgba(58,45,40,0.15);
     overflow: hidden;
+    cursor: pointer;
+    touch-action: none;
+}
+
+.carousel-progress-fill {
+    height: 100%;
+    width: 0%;
+    min-width: 8px;
+    border-radius: 999px;
+    background-color: var(--color-accent);
+    box-shadow: 0 0 8px rgba(178,34,34,0.55);
+    transition: width 0.15s ease-out;
 }
 
 .feature-img {
@@ -501,10 +597,6 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .feature-grid {
-        grid-template-columns: 1fr;
-    }
-
     .footer-inner {
         grid-template-columns: 1fr;
     }
@@ -522,6 +614,16 @@ body {
     /* When you add JS later, you'll toggle this class */
     .mobile-menu.is-open {
         display: block;
+    }
+
+    .feature-card {
+        flex-basis: 82vw;
+    }
+}
+
+@media (max-width: 640px) {
+    .carousel-arrow {
+        display: none;
     }
 }
 
