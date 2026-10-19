@@ -10,14 +10,27 @@ export const metadata: Metadata = {
 
 const technicalSkills = [
   { label: "Front-End", value: "HTML/CSS, JavaScript, React" },
-  { label: "Back-End", value: "Node.js, Express (in progress)" },
+  { label: "Back-End", value: "Python" },
   { label: "Databases", value: "MySQL" },
   { label: "Tools", value: "Git, GitHub" },
+  {
+    label: "Security",
+    value:
+      "CompTIA A+, CompTIA Network+, CompTIA Security+, Firewall configuration, Linux fundamentals",
+  },
   {
     label: "Other",
     value:
       "Hardware and network troubleshooting, systems diagnostics, inventory and logistics tracking software",
   },
+];
+
+const certifications = [
+  "CompTIA A+",
+  "CompTIA Network+",
+  "CompTIA Security+",
+  "Firewall Configuration",
+  "Linux Fundamentals",
 ];
 
 const experience = [
@@ -138,6 +151,22 @@ const ResumePage = () => {
                 </div>
               ))}
             </dl>
+          </div>
+
+          <div>
+            <h2 className="mb-4 text-sm font-bold uppercase tracking-[0.08em] text-accent">
+              Certifications
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {certifications.map((cert) => (
+                <span
+                  key={cert}
+                  className="inline-flex items-center rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.08em] text-accent"
+                >
+                  {cert}
+                </span>
+              ))}
+            </div>
           </div>
 
           <div>

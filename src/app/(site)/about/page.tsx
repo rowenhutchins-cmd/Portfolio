@@ -48,9 +48,19 @@ const experience = [
 
 const skills = [
   { group: "Front-End", items: ["HTML", "CSS", "JavaScript", "React"] },
-  { group: "Back-End", items: ["Node.js", "Express (in progress)"] },
+  { group: "Back-End", items: ["Python"] },
   { group: "Databases", items: ["MySQL"] },
   { group: "Tools", items: ["Git", "GitHub"] },
+  {
+    group: "Security",
+    items: [
+      "CompTIA A+",
+      "CompTIA Network+",
+      "CompTIA Security+",
+      "Firewall configuration",
+      "Linux fundamentals",
+    ],
+  },
   {
     group: "Other",
     items: [
@@ -59,6 +69,14 @@ const skills = [
       "Inventory and logistics tracking software",
     ],
   },
+];
+
+const certifications = [
+  { name: "CompTIA A+", status: "Completed" },
+  { name: "CompTIA Network+", status: "Completed" },
+  { name: "CompTIA Security+", status: "Completed" },
+  { name: "Firewall Configuration", status: "Completed" },
+  { name: "Linux Fundamentals", status: "Completed" },
 ];
 
 const AboutPage = () => {
@@ -178,6 +196,30 @@ const AboutPage = () => {
                     </li>
                   ))}
                 </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-white/10 bg-ink py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <h2 className="mb-10 text-heading-3 font-extrabold text-white lg:mb-14">
+            Certifications
+          </h2>
+
+          <div className="flex flex-col gap-6">
+            {certifications.map((cert) => (
+              <div
+                key={cert.name}
+                className="flex flex-wrap items-center justify-between gap-3 border-l border-white/10 pl-4"
+              >
+                <h3 className="text-base font-bold text-white">
+                  {cert.name}
+                </h3>
+                <span className="inline-flex w-fit items-center rounded-full border border-accent/40 bg-accent/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-accent">
+                  {cert.status}
+                </span>
               </div>
             ))}
           </div>

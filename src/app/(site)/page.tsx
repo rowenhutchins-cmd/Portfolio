@@ -1,4 +1,5 @@
 import Contact from "@/components/Contact";
+import Certifications from "@/components/Home/Certifications";
 import Hero from "@/components/Home/Hero";
 import { Metadata } from "next";
 
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <Certifications />
       <Contact />
     </>
   );
